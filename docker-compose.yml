@@ -30,9 +30,7 @@ services:
     build: ./gatewayserver
     ports:
       - "8080:8080"
-    restart: on-failure # her hata aldığında
-    # restart: unless-stopped # kullanıcı dışında konteyner durdu ise
-    # restart: always # kullanıcı dahil herhangi bir şekilde durdu ise.
+    restart: on-failure 
     depends_on:
       - discovery-server
       - config-server
@@ -41,7 +39,6 @@ services:
       - CONFIGURL=http://config-server:8079
     networks:
       - common
-
 
 volumes:
   postgresql-volume: #dosyadaki nickname'i
